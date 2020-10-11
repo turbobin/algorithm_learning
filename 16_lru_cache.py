@@ -38,17 +38,16 @@ class LRUCache:
         self.capacity = capacity
         self.cache = OrderedDict()
 
-
     def set(self, key, value):
 
         if key in self.cache:
             self.cache.pop(key)
 
         if len(self.cache) >= self.capacity:
-            self.cache.popitem(last=False)  # 只有OrderedDict才有popitem(last=Flase)这个参数，
-                                            # dict的popitem()里不能加参数
+            self.cache.popitem(last=False)  
+            # 只有OrderedDict才有popitem(last=Flase)这个参数，
+            # dict的popitem()里不能加参数
         self.cache[key] = value
-
 
     def get(self, key):
         if key in self.cache:
@@ -59,15 +58,15 @@ class LRUCache:
 
         return None
 
+if __name__ == '__main__':
+    lrucache = LRUCache(5)
+    lrucache.set(1, "a")
+    lrucache.set(3, "b")
+    lrucache.set(2, "c")
+    lrucache.set(3, "d")
+    lrucache.set(4, "e")
+    lrucache.set(6, "f")
 
-lrucache = LRUCache(5)
-lrucache.set(1, "a")
-lrucache.set(3, "b")
-lrucache.set(2, "c")
-lrucache.set(3, "d")
-lrucache.set(4, "e")
-lrucache.set(6, "f")
-
-print(lrucache.cache)
-print(lrucache.get(2))
-print(lrucache.cache)
+    print(lrucache.cache)
+    print(lrucache.get(2))
+    print(lrucache.cache)
