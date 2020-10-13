@@ -1,42 +1,42 @@
 # -*- coding: utf-8 -*-
 
 def binary_search(arr, key):
-	if len(arr) <= 1:
-		return 0
+    if len(arr) <= 1:
+        return 0
 
-	min = 0
-	max = len(arr) - 1
-	mid = (min + max) // 2	# 地板除，只保留整数
-	while arr[mid] != key:
-		if arr[mid] > key:
-			max = mid - 1
-		elif arr[mid] < key:
-			min = mid + 1
-		
-		mid = (min + max)//2
-		if min > max:
-			return None
+    min = 0
+    max = len(arr) - 1
+    mid = (min + max) // 2  # 地板除，只保留整数
+    while arr[mid] != key:
+        if arr[mid] > key:
+            max = mid - 1
+        elif arr[mid] < key:
+            min = mid + 1
 
-	return mid
+        mid = (min + max)//2
+        if min > max:
+            return None
+
+    return mid
 
 
 def binary_search2(arr, key):
-	"""
-	二分法，时间复杂度 O(logn)
-	"""
-	low = 0
-	high = len(arr) - 1
+    """
+    二分法，时间复杂度 O(logn)
+    """
+    low = 0
+    high = len(arr) - 1
 
-	while low <= high:
-		mid = (low + high) // 2
-		if arr[mid] > key:
-			high = mid - 1
-		elif arr[mid] < key:
-			low = mid + 1
-		else:
-			return mid
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] > key:
+            high = mid - 1
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            return mid
 
-	return None
+    return None
 
 
 def binary_search3(arr, key):

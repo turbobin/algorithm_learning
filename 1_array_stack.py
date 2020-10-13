@@ -14,21 +14,21 @@ class ArrayStack():
             print('栈溢出了', self.arr)
             return False
 
-            self.arr.append(item)
-            self.count += 1
-            print('push操作：', self.arr)
-            return True
+        self.arr.append(item)
+        self.count += 1
+        print('push操作：', self.arr)
+        return True
 
     def pop(self):
         if self.count == 0:
             print('栈空了', self.count)
             return None
 
-            item = self.arr[-1]
-            self.arr = self.arr[:-1]
-            self.count -= 1
-            print('pop操作：', item)
-            return item
+        item = self.arr[-1]
+        self.arr = self.arr[:-1]
+        self.count -= 1
+        print('pop操作：', item)
+        return item
 
     def __repr__(self):
         return "{}".format(self.arr)

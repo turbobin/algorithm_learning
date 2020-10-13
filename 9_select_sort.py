@@ -3,30 +3,30 @@
 # created on '2019/1/16'
 
 def findmin(arr):
-	"""
-	找出数组中最小值
-	"""
-	min_num = arr[0]
-	min_index = 0
-	n = len(arr)
-	for i in range(1, n):
-		if arr[i] < min_num:
-			min_num = arr[i]
-			min_index = i
+    """
+    找出数组中最小值
+    """
+    min_num = arr[0]
+    min_index = 0
+    n = len(arr)
+    for i in range(1, n):
+        if arr[i] < min_num:
+            min_num = arr[i]
+            min_index = i
 
-	return min_index
+    return min_index
 
 
 def select_sort(arr):
-	"""
-	快速排序，时间复杂度 O(n^2)
-	"""
-	new_arr = []
-	for i in range(len(arr)):
-		min_index = findmin(arr)
-		new_arr.append(arr.pop(min_index))
+    """
+    快速排序，时间复杂度 O(n^2)
+    """
+    new_arr = []
+    for i in range(len(arr)):
+        min_index = findmin(arr)
+        new_arr.append(arr.pop(min_index))
 
-	return new_arr
+    return new_arr
 
 
 arr = [3, 5, 1, 6, 0, 6]

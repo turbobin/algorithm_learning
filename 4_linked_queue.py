@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # created on '2019/1/20'
 class Node:
-    
+
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
@@ -12,7 +12,7 @@ class LinkedQueue:
     def __init__(self):
         self.head = None
         self.tail = None
-    
+
     def enqueue(self, item):
         new_node = Node(item)
         if self.tail:
@@ -21,7 +21,7 @@ class LinkedQueue:
             self.head = new_node
         self.tail = new_node
         return True
-    
+
     def dequeue(self):
         if self.head:
             item = self.head.data
@@ -29,7 +29,7 @@ class LinkedQueue:
             if not self.head:
                 self.tail = None
             return item
-    
+
     def __repr__(self):
         items = []
         base_node = self.head

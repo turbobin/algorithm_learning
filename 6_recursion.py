@@ -6,14 +6,14 @@
 depth = 0
 
 def f(n):
-	global depth
-	depth += 1
-	if depth > 500:
-		raise RuntimeError('超出递归深度了')
-	if n == 1:
-		return 1
+    global depth
+    depth += 1
+    if depth > 500:
+        raise RuntimeError('超出递归深度了')
+    if n == 1:
+        return 1
 
-	return f(n-1) + 1
+    return f(n-1) + 1
 
 f = f(500)
 print('f(n):', f)
