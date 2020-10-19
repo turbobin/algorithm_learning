@@ -22,6 +22,8 @@ class LinkedStack():
         if self.base_node:
             item = self.base_node.data
             self.base_node = self.base_node.next	# 表示删除一个结点
+            return item
+        return None
 
     def __repr__(self):
         base_node = self.base_node
@@ -39,5 +41,6 @@ if __name__ == '__main__':
     stack.push(2)
     stack.push(3)
     stack.push(4)
-    stack.pop()
+    item = stack.pop()
+    print(item)
     print(stack)
