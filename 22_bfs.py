@@ -18,6 +18,7 @@ class Graph:
         self.adj[t].append(s)
 
     def bfs(self, s, t):
+        "广度优先搜索"
         if s == t:
             return
         visited = [False] * self.v
