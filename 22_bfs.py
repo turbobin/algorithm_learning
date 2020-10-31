@@ -20,26 +20,29 @@ class Graph:
     def bfs(self, s, t):
         "广度优先搜索"
         if s == t:
-            return
+            return 1
         visited = [False] * self.v
         visited[s] = True
         queue = deque()
         queue.append(s)
         prev = [-1] * self.v
+        level = 1
         while queue:
             print(queue)
-            w = queue.popleft()
-            for q in self.adj[w]:
-                if visited[q]:
-                    continue
-                prev[q] = w
-                if q == t:
-                    print(prev)
-                    path = self._print_path(prev, s, t)
-                    print("->".join(path))
-                    return
-                visited[q] = True
-                queue.append(q)
+            for _ in range(len(queue)):
+                w = queue.popleft()
+                for q in self.adj[w]:
+                    if visited[q]:
+                        continue
+                    prev[q] = w
+                    if q == t:
+                        print(prev)
+                        path = self._print_path(prev, s, t)
+                        print("->".join(path))
+                        return level
+                    visited[q] = True
+                    queue.append(q)
+            level += 1
 
     def _print_path(self, prev, s, t):
         """递归打印路径"""
@@ -69,4 +72,4 @@ if __name__ == "__main__":
     graph.add_edge(5, 7)
     graph.add_edge(6, 7)
     print(graph)
-    graph.bfs(0, 7)
+    print(graph.bfs(0, 4))
