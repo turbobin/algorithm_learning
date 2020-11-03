@@ -16,12 +16,18 @@ class Solution:
 
     def solve(self):
 
+        memo = {}   # 备忘录
         def _recur_package(i, sum_weight):
             if sum_weight == self.w or i == self.n:
                 # 已装满或者已选完所有物品
                 if sum_weight > self.MAX_W:
                     self.MAX_W = sum_weight
                 return
+            item = (i, sum_weight)
+            if item in memo:
+                return  # 已经处理过，不再处理
+            memo[item] = True   # 记录状态
+
             # 不选择第 i 个物品
             _recur_package(i+1, sum_weight)
             if sum_weight + self.items[i] <= self.w:
@@ -33,5 +39,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    result = Solution(10, 20).solve()
+    result = Solution(10, 37).solve()
     print(result)
