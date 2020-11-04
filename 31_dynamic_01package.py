@@ -32,12 +32,32 @@ class Solution:
             w -= 1
         return 0
 
+    def knapsack2(self, weights, n, w):
+        # weights:物品重量，n:物品个数，w:背包可承载重量
+        states = [0] * (w+1)    # 使用一维数组，节省空间
+        states[0] = 1
+        if weights[0] <= w:
+            states[weights[0]] = 1
+        for i in range(1, n):
+            # 把第 i 个物品放入背包
+            k = w - weights[i]
+            while k >= 0:
+                if states[k] == 1:
+                    states[k + weights[i]] = 1
+                k -= 1
+        # 输出结果
+        while w >= 0:
+            if states[w] == 1:
+                return w
+            w -= 1
+        return 0
+
+
 if __name__ == "__main__":
     weights = [2, 2, 4, 6, 3]
     n = 5
-    w = 9
+    w = 16
     result = Solution().knapsack(weights, n, w)
     print(result)
-
-
-
+    result = Solution().knapsack2(weights, n, w)
+    print(result)

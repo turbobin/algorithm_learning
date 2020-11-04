@@ -16,7 +16,7 @@ class Solution:
 
     def solve(self):
 
-        memo = {}   # 备忘录
+        memo = set()   # 备忘录
         def _recur_package(i, sum_weight):
             if sum_weight == self.w or i == self.n:
                 # 已装满或者已选完所有物品
@@ -26,7 +26,7 @@ class Solution:
             item = (i, sum_weight)
             if item in memo:
                 return  # 已经处理过，不再处理
-            memo[item] = True   # 记录状态
+            memo.add(item)   # 记录状态
 
             # 不选择第 i 个物品
             _recur_package(i+1, sum_weight)
