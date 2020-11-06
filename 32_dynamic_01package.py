@@ -33,7 +33,7 @@ class Solution:
 
     def knapsack2(self, weights, values, n, w):
         """动态规划解法"""
-        states = [[0] * (w+1) for _ in range(n)]    # 记录每个状态的最大值
+        states = [[-1] * (w+1) for _ in range(n)]    # 记录每个状态的最大值
         states[0][0] = 0
         if states[0][weights[0]] <= w:
             states[0][weights[0]] = values[0]
@@ -45,9 +45,10 @@ class Solution:
             k = weights[i]
             for j in range(w-k+1):
                 # 放入背包
-                sv = states[i-1][j] + values[i]
-                if sv > states[i][j+k]:
-                    states[i][j+k] = sv
+                if states[i-1][j] >= 0:
+                    sv = states[i-1][j] + values[i]     # 前面物品总价值加上当前这个物品价值
+                    if sv > states[i][j+k]:
+                        states[i][j+k] = sv
 
         # 找出最大值
         max_value = 0
