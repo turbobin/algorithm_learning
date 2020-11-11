@@ -26,8 +26,10 @@ class Solution:
     def merge(self, nums, p, q, r):
         tmp = []
         i, j = p, q+1
+        # print(nums[p: q+1], nums[q+1: r+1])
         while i <= q and j <= r:
             if nums[i] > nums[j]:
+                # 因为 nums[i: q+1] 是一个升序数组，如果i>j, 那么i~q+1都是大于j
                 self.cnt += (q-i+1)     # i 到 q 之间的逆序对个数
                 tmp.append(nums[j])
                 j += 1
