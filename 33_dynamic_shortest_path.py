@@ -72,9 +72,13 @@ class Solution:
         def recur_min_dist(i, j):
             if i == 0 and j == 0:
                 return matrix[0][0]
-            print(i, j)
 
             # 处理角标越界
+            if i == 0:
+                return sum([matrix[0][k] for k in range(j+1)])
+            if j == 0:
+                return sum(matrix[k][0] for k in range(i+1))
+
             if memo[i][j] > 0:
                 return memo[i][j]
             min_dist = matrix[i][j] + min(recur_min_dist(i, j-1), recur_min_dist(i-1, j))
