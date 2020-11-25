@@ -20,7 +20,7 @@ def quick_sort_c(arr, p, r, k):
     q = partition(arr, p, r)
     if q + 1 == k:
         return arr[q]
-    if q + 1 > k:
+    elif q + 1 > k:
         # 在左半部分查找
         return quick_sort_c(arr, p, q-1, k)
     else:
