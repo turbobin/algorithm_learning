@@ -13,7 +13,7 @@ class LRUcache:
 
     def set(self, key, value):
         if len(self.cache) > self.capacity:
-            old_key = min(self.cache.keys, key=lambda k:self.lru[k])
+            old_key = min(self.cache.keys, key=lambda k: self.lru[k])
             self.cache.pop(old_key)
             self.lru.pop(old_key)
 
@@ -30,23 +30,23 @@ class LRUcache:
         return -1
 
 
-
 # 使用有序字典(推荐)
 from collections import OrderedDict
+
 class LRUCache:
     def __init__(self, capacity):
         self.capacity = capacity
         self.cache = OrderedDict()
 
     def set(self, key, value):
+        if len(self.cache) >= self.capacity:
+            self.cache.popitem(last=False)
+            # 只有OrderedDict才有popitem(last=Flase)这个参数，
+            # dict的popitem()里不能加参数
 
         if key in self.cache:
             self.cache.pop(key)
 
-        if len(self.cache) >= self.capacity:
-            self.cache.popitem(last=False)  
-            # 只有OrderedDict才有popitem(last=Flase)这个参数，
-            # dict的popitem()里不能加参数
         self.cache[key] = value
 
     def get(self, key):
@@ -57,6 +57,7 @@ class LRUCache:
             return value
 
         return None
+
 
 if __name__ == '__main__':
     lrucache = LRUCache(5)
